@@ -23,11 +23,11 @@
 */
 
 import { DEBUG, EDITOR, JSB } from 'internal:constants';
-import {
-    ccclass, executeInEditMode, requireComponent, tooltip,
-    type, displayOrder, serializable, override, visible, displayName, disallowAnimation,
-} from 'cc.decorator';
-import { Color, assert, ccenum, cclegacy } from '../../core';
+import { ccclass, executeInEditMode, requireComponent, tooltip, type, displayOrder, serializable, override, visible, displayName, disallowAnimation } from 'cc.decorator';
+import { assert } from '@base/debug';
+import { cclegacy } from '@base/global';
+import { ccenum } from '@base/object';
+import { Color } from '@base/math';
 import { builtinResMgr } from '../../asset/asset-manager';
 import { Material } from '../../asset/assets';
 import { BlendFactor, BlendOp, ColorMask } from '../../gfx';

@@ -24,8 +24,11 @@
 */
 
 import { BUILD, EDITOR, PREVIEW } from 'internal:constants';
+import { error } from '@base/debug';
+import { cclegacy } from '@base/global';
+import { EventTarget } from '@base/event';
 import { Asset } from '../assets/asset';
-import { error, sys, Settings, settings, path, cclegacy, EventTarget } from '../../core';
+import { sys, Settings, settings, path } from '../../core';
 import Bundle from './bundle';
 import Cache, { ICache } from './cache';
 import CacheManager from './cache-manager';
@@ -41,10 +44,7 @@ import { Pipeline } from './pipeline';
 import preprocess from './preprocess';
 import { releaseManager } from './release-manager';
 import RequestItem from './request-item';
-import {
-    presets,
-    references,
-    assets, BuiltinBundleName, bundles, fetchPipeline, files, parsed, pipeline, transformPipeline, assetsOverrideMap, IRequest } from './shared';
+import { presets, references, assets, BuiltinBundleName, bundles, fetchPipeline, files, parsed, pipeline, transformPipeline, assetsOverrideMap, IRequest } from './shared';
 
 import Task from './task';
 import { combine, parse, replaceOverrideAsset } from './url-transformer';

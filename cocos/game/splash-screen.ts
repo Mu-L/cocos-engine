@@ -24,16 +24,13 @@
 
 import { EDITOR, TAOBAO } from 'internal:constants';
 import { ImageData } from 'pal/image';
+import { cclegacy, ccwindow } from '@base/global';
+import { clamp01, Mat4, Vec2, preTransforms } from '@base/math';
 import { Material } from '../asset/assets/material';
-import { clamp01, Mat4, Vec2, Settings, settings, sys, cclegacy, easing, preTransforms } from '../core';
-import {
-    Sampler, SamplerInfo, Shader, Texture, TextureInfo, Device, InputAssembler, InputAssemblerInfo, Attribute, Buffer,
-    BufferInfo, Rect, Color, BufferTextureCopy, CommandBuffer, BufferUsageBit, Format,
-    MemoryUsageBit, TextureType, TextureUsageBit, Address, Swapchain, Framebuffer,
-} from '../gfx';
+import { Settings, settings, sys, easing } from '../core';
+import { Sampler, SamplerInfo, Shader, Texture, TextureInfo, Device, InputAssembler, InputAssemblerInfo, Attribute, Buffer, BufferInfo, Rect, Color, BufferTextureCopy, CommandBuffer, BufferUsageBit, Format, MemoryUsageBit, TextureType, TextureUsageBit, Address, Swapchain, Framebuffer } from '../gfx';
 import { PipelineStateManager } from '../rendering';
 import { SetIndex } from '../rendering/define';
-import { ccwindow, legacyCC } from '../core/global-exports';
 import { XREye } from '../xr/xr-enums';
 import { ImageAsset } from '../asset/assets';
 
@@ -577,7 +574,7 @@ export class SplashScreen {
                 device.flushCommands([cmdBuff]);
                 device.queue.submit([cmdBuff]);
                 device.present();
-                device.enableAutoBarrier(!legacyCC.rendering);
+                device.enableAutoBarrier(!cclegacy.rendering);
 
                 if (sys.isXR) {
                     xr.entry.renderLoopEnd(xrEye);

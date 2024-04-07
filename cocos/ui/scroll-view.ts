@@ -25,18 +25,19 @@
 
 import { ccclass, help, executionOrder, menu, requireComponent, tooltip, displayOrder, range, type, serializable } from 'cc.decorator';
 import { EDITOR_NOT_IN_PREVIEW } from 'internal:constants';
+import { errorID, logID } from '@base/debug';
+import { cclegacy } from '@base/global';
+import { Event } from '@base/event';
+import { Size, Vec2, Vec3, approx } from '@base/math';
 import { EventHandler as ComponentEventHandler } from '../scene-graph/component-event-handler';
 import { UITransform } from '../2d/framework';
-import { Event, EventMouse, EventTouch, Touch, SystemEventType, EventHandle, EventGamepad } from '../input/types';
-import { errorID, logID } from '../core/platform/debug';
-import { Size, Vec2, Vec3, approx } from '../core/math';
+import { EventMouse, EventTouch, Touch, SystemEventType, EventHandle, EventGamepad } from '../input/types';
 import { Layout } from './layout';
 import { ScrollBar } from './scroll-bar';
 import { ViewGroup } from './view-group';
 import { Node } from '../scene-graph/node';
 import { director, Director } from '../game/director';
 import { TransformBit } from '../scene-graph/node-enum';
-import { legacyCC } from '../core/global-exports';
 import { NodeEventType } from '../scene-graph/node-event';
 import { Input, input } from '../input/input';
 import { DeviceType, XrUIPressEvent, XrUIPressEventType } from '../xr/event/xr-event-handle';
@@ -2042,4 +2043,4 @@ export class ScrollView extends ViewGroup {
  * @param {ScrollView} scrollView - The ScrollView component.
  */
 
-legacyCC.ScrollView = ScrollView;
+cclegacy.ScrollView = ScrollView;

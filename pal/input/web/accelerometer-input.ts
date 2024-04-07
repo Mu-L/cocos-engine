@@ -23,13 +23,12 @@
 */
 
 import { AccelerometerCallback } from 'pal/input';
-import { systemInfo } from 'pal/system-info';
-import { screenAdapter } from 'pal/screen-adapter';
-import { EventTarget } from '../../../cocos/core/event/event-target';
-import { BrowserType, OS } from '../../system-info/enum-type';
+import { systemInfo, BrowserType, OS } from '@pal/system-info';
+import { screenAdapter } from '@pal/screen-adapter';
+import { warn } from '@base/debug';
+import { EventTarget } from '@base/event';
 import { EventAcceleration, Acceleration } from '../../../cocos/input/types';
 import { InputEventType } from '../../../cocos/input/types/event-enum';
-import { warn } from '../../../cocos/core/platform/debug';
 
 export class AccelerometerInputSource {
     private _intervalInMileSeconds = 200;

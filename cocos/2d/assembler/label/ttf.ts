@@ -27,7 +27,8 @@
  * @module ui-assembler
  */
 
-import { Color, js } from '../../../core';
+import { js } from '@base/utils';
+import { Color } from '@base/math';
 import { IBatcher } from '../../renderer/i-batcher';
 import { Label } from '../../components/label';
 import { IAssembler } from '../../renderer/base';

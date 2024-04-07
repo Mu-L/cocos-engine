@@ -23,10 +23,12 @@
  THE SOFTWARE.
 */
 
-import { ccclass, help, executionOrder, menu, tooltip, displayOrder,
-    type, visible, serializable, range, slide, executeInEditMode } from 'cc.decorator';
+import { ccclass, help, executionOrder, menu, tooltip, displayOrder, type, visible, serializable, range, slide, executeInEditMode } from 'cc.decorator';
 import { JSB } from 'internal:constants';
-import { clamp, Color, Mat4, Vec2, Vec3, warnID, cclegacy, ccenum, error } from '../../core';
+import { warnID, error } from '@base/debug';
+import { cclegacy } from '@base/global';
+import { ccenum } from '@base/object';
+import { clamp, Color, Mat4, Vec2, Vec3 } from '@base/math';
 import { Graphics } from './graphics';
 import { TransformBit } from '../../scene-graph/node-enum';
 import { Stage } from '../renderer/stencil-manager';
@@ -456,11 +458,9 @@ export class Mask extends Component {
 
     protected _removeMaskNode (): void {
         if (this._sprite) {
-            this._sprite.destroy();
             this._sprite = null;
         }
         if (this._graphics) {
-            this._graphics.destroy();
             this._graphics = null;
         }
     }

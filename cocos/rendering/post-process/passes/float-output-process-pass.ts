@@ -22,7 +22,8 @@
  THE SOFTWARE.
 */
 
-import { Vec4, cclegacy } from '../../../core';
+import { cclegacy } from '@base/global';
+import { Vec4 } from '@base/math';
 import { ClearFlagBit, Format } from '../../../gfx';
 import { Camera, FOG_TYPE_NONE } from '../../../render-scene/scene';
 import { Pipeline } from '../../custom/pipeline';

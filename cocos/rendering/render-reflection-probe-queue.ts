@@ -22,6 +22,7 @@
  THE SOFTWARE.
 */
 
+import { cclegacy } from '@base/global';
 import { SubModel } from '../render-scene/scene/submodel';
 import { isEnableEffect, SetIndex } from './define';
 import { Device, RenderPass, Shader, CommandBuffer } from '../gfx';
@@ -33,7 +34,7 @@ import { ProbeType, ReflectionProbe } from '../render-scene/scene/reflection-pro
 import { Camera, SKYBOX_FLAG } from '../render-scene/scene/camera';
 import { PipelineRuntime } from './custom/pipeline';
 import { RenderInstancedQueue } from './render-instanced-queue';
-import { cclegacy, geometry } from '../core';
+import { geometry } from '../core';
 
 const CC_USE_RGBE_OUTPUT = 'CC_USE_RGBE_OUTPUT';
 let _phaseID = getPhaseID('default');

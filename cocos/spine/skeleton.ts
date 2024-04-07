@@ -23,18 +23,20 @@
 */
 import { EDITOR_NOT_IN_PREVIEW, JSB } from 'internal:constants';
 import { ccclass, executeInEditMode, help, menu, serializable, type, displayName, override, displayOrder, editable, tooltip } from 'cc.decorator';
+import { error, logID, warn } from '@base/debug';
+import { cclegacy } from '@base/global';
+import { js, memop } from '@base/utils';
+import { Enum, ccenum, CCObject, setPropertyEnumType } from '@base/object';
+import { EnumType } from '@base/object/internal';
+import { Color } from '@base/math';
 import { Material, Texture2D } from '../asset/assets';
-import { error, logID, warn } from '../core/platform/debug';
-import { Enum, EnumType, ccenum } from '../core/value-types/enum';
 import { Node } from '../scene-graph';
-import { CCObject, Color, RecyclePool, js } from '../core';
 import { SkeletonData } from './skeleton-data';
 import { Graphics, UIRenderer } from '../2d';
 import { Batcher2D } from '../2d/renderer/batcher-2d';
 import { BlendFactor, BlendOp } from '../gfx';
 import { MaterialInstance } from '../render-scene';
 import { builtinResMgr } from '../asset/asset-manager';
-import { legacyCC } from '../core/global-exports';
 import { SkeletonSystem } from './skeleton-system';
 import { RenderEntity, RenderEntityType } from '../2d/renderer/render-entity';
 import { AttachUtil } from './attach-util';
@@ -43,7 +45,6 @@ import spine from './lib/spine-core.js';
 import { VertexEffectDelegate } from './vertex-effect-delegate';
 import SkeletonCache, { AnimationCache, AnimationFrame } from './skeleton-cache';
 import { TrackEntryListeners } from './track-entry-listeners';
-import { setPropertyEnumType } from '../core/internal-index';
 
 const spineTag = SPINE_WASM;
 const CachedFrameTime = 1 / 60;
@@ -238,7 +239,7 @@ export class Skeleton extends UIRenderer {
     // Animation name
     protected _animationName = '';
     protected _skinName = '';
-    protected _drawList = new RecyclePool<SkeletonDrawData>((): SkeletonDrawData => ({
+    protected _drawList = new memop.RecyclePool<SkeletonDrawData>((): SkeletonDrawData => ({
         material: null,
         texture: null,
         indexOffset: 0,
@@ -317,7 +318,7 @@ export class Skeleton extends UIRenderer {
     /**
      * @engineInternal
      */
-    get drawList (): RecyclePool<SkeletonDrawData> { return this._drawList; }
+    get drawList (): memop.RecyclePool<SkeletonDrawData> { return this._drawList; }
 
     /**
      * @en
@@ -1790,4 +1791,4 @@ export class Skeleton extends UIRenderer {
     }
 }
 
-legacyCC.internal.SpineSkeleton = Skeleton;
+cclegacy.internal.SpineSkeleton = Skeleton;

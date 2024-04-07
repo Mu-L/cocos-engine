@@ -22,7 +22,9 @@
  THE SOFTWARE.
 */
 
-import { Enum, Color, Vec4, cclegacy } from '../../core';
+import { cclegacy } from '@base/global';
+import { Enum } from '@base/object';
+import { Color, Vec4 } from '@base/math';
 import { FogInfo } from '../../scene-graph/scene-globals';
 import { SRGBToLinear } from '../../rendering/pipeline-funcs';
 import { Root } from '../../root';

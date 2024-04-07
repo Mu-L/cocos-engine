@@ -1,4 +1,4 @@
-import { Vec4 } from '../../../core';
+import { Vec4 } from '@base/math';
 
 import { ClearFlagBit, Format } from '../../../gfx';
 import { Camera, ShadowType } from '../../../render-scene/scene';
@@ -17,10 +17,11 @@ export class ForwardPass extends BasePass {
     depthBufferShadingScale = 1;
 
     calcDepthSlot (camera: Camera): void {
-        let canUsePrevDepth = !!passContext.depthSlotName;
-        canUsePrevDepth = !(camera.clearFlag & ClearFlagBit.DEPTH_STENCIL);
+        const depthSlotName = !!passContext.depthSlotName;
+        let canUsePrevDepth = !(camera.clearFlag & ClearFlagBit.DEPTH_STENCIL);
         canUsePrevDepth = canUsePrevDepth && passContext.shadingScale === this.depthBufferShadingScale;
         if (canUsePrevDepth) {
+            if (!depthSlotName) passContext.depthSlotName = super.slotName(camera, 1);
             return;
         }
         this.depthBufferShadingScale = passContext.shadingScale;

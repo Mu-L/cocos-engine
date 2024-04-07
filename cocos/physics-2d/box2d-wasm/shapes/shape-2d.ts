@@ -22,11 +22,10 @@
  THE SOFTWARE.
 */
 
-import { B2, getImplPtr, addImplPtrReference, addImplPtrReferenceWASM, removeImplPtrReference,
-    removeImplPtrReferenceWASM } from '../instantiated';
+import { Rect, Vec3 } from '@base/math';
+import { B2, getImplPtr, addImplPtrReference, addImplPtrReferenceWASM, removeImplPtrReference, removeImplPtrReferenceWASM } from '../instantiated';
 import { IBaseShape } from '../../spec/i-physics-shape';
 import { Collider2D, PhysicsSystem2D, RigidBody2D, PHYSICS_2D_PTM_RATIO } from '../../../../exports/physics-2d-framework';
-import { Rect, Vec3 } from '../../../core';
 import { B2PhysicsWorld } from '../physics-world';
 import { PhysicsGroup } from '../../../physics/framework/physics-enum';
 
@@ -77,7 +76,7 @@ export class B2Shape2D implements IBaseShape {
     }
 
     onDisable (): void {
-        PhysicsSystem2D.instance._callAfterStep(this, this._destroy);
+        PhysicsSystem2D.instance._callAfterStep(this, this.destroy);
     }
 
     start (): void {
@@ -92,7 +91,7 @@ export class B2Shape2D implements IBaseShape {
     }
 
     apply (): void {
-        this._destroy();
+        this.destroy();
         if (this.collider.enabledInHierarchy) {
             this._init();
         }
@@ -200,7 +199,7 @@ export class B2Shape2D implements IBaseShape {
         this._inited = true;
     }
 
-    _destroy (): void {
+    destroy (): void {
         if (!this._inited) return;
 
         const fixtures = this._fixtures;

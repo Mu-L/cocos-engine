@@ -22,17 +22,17 @@
  THE SOFTWARE.
 */
 
-import { systemInfo } from 'pal/system-info';
+import { systemInfo } from '@pal/system-info';
+import { assert } from '@base/debug';
+import { cclegacy } from '@base/global';
 import { Color, Format, LoadOp, Rect, StoreOp, Viewport } from '../../gfx/base/define';
 import { CSMLevel, Camera, CameraUsage, Light, DirectionalLight, Shadows, SpotLight } from '../../render-scene/scene';
 import { BasicPipeline, PipelineBuilder } from './pipeline';
 import { CopyPair, LightInfo, QueueHint, ResourceResidency, SceneFlags } from './types';
-import { buildBloomPass, buildForwardPass, buildFxaaPass, buildPostprocessPass, buildSSSSPass,
-    buildToneMappingPass, buildTransparencyPass, buildUIPass, hasSkinObject,
-    buildHBAOPasses, buildCopyPass, getRenderArea, buildReflectionProbePasss } from './define';
+import { buildBloomPass, buildForwardPass, buildFxaaPass, buildPostprocessPass, buildSSSSPass, buildToneMappingPass, buildTransparencyPass, buildUIPass, hasSkinObject, buildHBAOPasses, buildCopyPass, getRenderArea, buildReflectionProbePasss } from './define';
 import { isUICamera } from './utils';
 import { RenderWindow } from '../../render-scene/core/render-window';
-import { assert, cclegacy, geometry } from '../../core';
+import { geometry } from '../../core';
 import { RenderScene } from '../../render-scene';
 import { AABB } from '../../core/geometry/aabb';
 import { PipelineSceneData } from '../pipeline-scene-data';

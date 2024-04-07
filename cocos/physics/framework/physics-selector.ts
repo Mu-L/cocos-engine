@@ -26,16 +26,14 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { EDITOR, TEST } from 'internal:constants';
-import { IBaseConstraint, IPointToPointConstraint, IHingeConstraint, IConeTwistConstraint, IFixedConstraint,
-    IConfigurableConstraint } from '../spec/i-physics-constraint';
-import {
-    IBoxShape, ISphereShape, ICapsuleShape, ITrimeshShape, ICylinderShape,
-    IConeShape, ITerrainShape, ISimplexShape, IPlaneShape, IBaseShape,
-} from '../spec/i-physics-shape';
+import { errorID, warn, debug } from '@base/debug';
+import { cclegacy } from '@base/global';
+import { IVec3Like } from '@base/math';
+import { IBaseConstraint, IPointToPointConstraint, IHingeConstraint, IConeTwistConstraint, IFixedConstraint, IConfigurableConstraint } from '../spec/i-physics-constraint';
+import { IBoxShape, ISphereShape, ICapsuleShape, ITrimeshShape, ICylinderShape, IConeShape, ITerrainShape, ISimplexShape, IPlaneShape, IBaseShape } from '../spec/i-physics-shape';
 import { IPhysicsWorld } from '../spec/i-physics-world';
 import { IRigidBody } from '../spec/i-rigid-body';
 import { IBoxCharacterController, ICapsuleCharacterController } from '../spec/i-character-controller';
-import { errorID, IVec3Like, warn, cclegacy, debug } from '../../core';
 import { EColliderType, EConstraintType, ECharacterControllerType } from './physics-enum';
 import { PhysicsMaterial } from '.';
 

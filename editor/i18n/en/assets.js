@@ -14,6 +14,33 @@ module.exports = {
         reset: 'Reset',
         save: 'Save',
         locate_asset: 'Locate in Assets Panel',
+        newFolder: 'Folder',
+        newJavaScript: 'JavaScript',
+        newTypeScript: 'TypeScript',
+        newCubeMap: 'CubeMap',
+        newRenderTexture: 'Render Texture',
+        newScene: 'Scene',
+        newPrefab: 'Node Prefab',
+        newMaterial: 'Material',
+        newPhysicsMaterial: 'Physics Material',
+        newEffect: 'Legacy Unlit Shader (Effect)',
+        newSurfaceEffect: 'Surface Shader (Effect)',
+        newChunk: 'Shader Header (Chunk)',
+        newAnimation: 'Animation Clip',
+        newAnimationGraph: 'Animation Graph',
+        newAnimationGraphVariant: 'Animation Graph Variant',
+        newAnimationMask: 'Animation Mask',
+        newAnimationGraphTS: 'Animation Graph Script',
+        renderPipeline: 'Render Pipeline',
+        renderPipelineAsset: 'Render Pipeline Asset',
+        forwardPipelineAsset: 'Forward Pipeline Asset',
+        renderPipelineTS: 'Render Pipeline Script',
+        RenderFlowTS: 'Render Flow Script',
+        RenderStageTS: 'Render Stage Script',
+        newPac: 'Auto Atlas',
+        newLabelAtlas: 'Label Atlas',
+        newTerrain: 'Terrain',
+        autoGenerateMaterial: 'Auto Generate Material',
         'label-atlas': {
             SpriteFrameTip: 'Sprite Frame',
             ItemWidthTip: 'Item Width',
@@ -93,7 +120,7 @@ module.exports = {
             propertyTips: {
                 // macros
                 USE_DITHERED_ALPHA_TEST: 'Make transparency using opaque dithered alpha clip with TAA.',
-                USE_TWOSIDE: 'Two sided material for single-face objects, normal get inverse on back-face. Cull mode should set to None.',
+                USE_TWOSIDE: 'Two sided lighting for single-face objects, normal get inverse on back-face automatically. Cull mode should set to None.',
                 IS_ANISOTROPY: 'Anisotropic materials, such as hair, disc, metal with micro-wires.',
                 USE_VERTEX_COLOR: 'Use vertex color, will become darker if mesh does not contain vertex color data.',
                 FIX_ANISOTROPIC_ROTATION_MAP: 'Fix the anomalous seam at the black-white joint of the anisotropic rotation map, turn it on if you encounter this problem.',
@@ -119,6 +146,7 @@ module.exports = {
             },
         },
         image: {
+            label: 'Image',
             type: 'Type',
             typeTip: 'Type',
             // bakeOfflineMipmaps: 'Bake Offline Mipmaps',
@@ -133,6 +161,7 @@ module.exports = {
             flipGreenChannel: 'Flip Green Channel',
         },
         spriteFrame: {
+            label: 'SpriteFrame',
             packable: 'Packable',
             packableTip: 'Whether to participate in dynamic atlas or automatic atlas in build processes.',
             rotated: 'Rotated',
@@ -412,6 +441,15 @@ module.exports = {
                     'When exporting FBX animations, whether prefer to use the time range recorded in FBX file.<br>' +
                     'If one is not preferred, or one is invalid for use, the time range is robustly calculated.<br>' +
                     'Some FBX generators may not export this information.',
+            },
+            preserveMeshInstances: {
+                name: 'Preserve Mesh Instances',
+                title:
+                    'In the FBX model, if a mesh is referenced by multiple nodes (aka, mesh instancing), whether to create only one mesh asset. <br>' +
+                    'If not, each reference will create a mesh asset copy.<br>' +
+                    'This option is by default unchecked but is checked for those models migrated from version prior to V3.9.0,<br>' +
+                    'since in previous versions the instances are always not preserved. <br>' +
+                    'This option is read-only here. To modify this option for special purpose, see manual docs.',
             },
             smartMaterialEnabled: {
                 name: 'Smart Material Conversion',
